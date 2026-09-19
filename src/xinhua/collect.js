@@ -232,28 +232,15 @@ async function main() {
  
         let channel="xinhua"
         let channelFile = getChannelFile(PATH, channel, "zh", "content.md")
-        let newsFileName=getNewsFileName(channel,"zh", newsDate.year, newsDate.month,newsDate.day, newsDate.hour)
-        let contentLink=`/zh/news/${channel}/${newsDate.year}/${newsDate.month}/${newsFileName}`
-        let contentTitle=articles[0].titleZh
-        let content=`${newsDate.year}-${newsDate.month}-${newsDate.day}:${newsDate.hour}: ${fmt.link(contentLink, contentTitle)}`
-        let fileContent=FileHelper.read(channelFile);
-        FileHelper.write(channelFile,content+"\n\n")
-        FileHelper.append(channelFile,fileContent) 
-        
-    }
+        let  newsFileName=getNewsFileName(channel,"zh", newsDate.year, newsDate.month,newsDate.day, newsDate.hour)
+    let contentLink=`/zh/news/${channel}/${newsDate.year}/${newsDate.month}/${newsFileName}`
+    let contentTitle=articles[0].titleZh
+    let content=`${newsDate.year}-${newsDate.month}-${newsDate.day}:${newsDate.hour}: ${fmt.link(contentLink, contentTitle)}`
+    let fileContent=FileHelper.read(channelFile);
+    FileHelper.write(channelFile,content+"\n\n")
+    FileHelper.append(channelFile,fileContent) 
 
 }
-
-
-try {
-    main()
-} catch (error) {
-    console.log(error);
-}
-
-
-
-
 
 
 
